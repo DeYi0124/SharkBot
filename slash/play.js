@@ -1,6 +1,8 @@
 const {SlashCommandBuilder} = require("@discordjs/builders")
 const {EmbedBuilder} = require("discord.js")
 const {QueryType} = require("discord-player")
+const { YouTubeExtractor } = require('@discord-player/extractor')
+
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -25,11 +27,14 @@ module.exports = {
                 .addStringOption((option) => option.setName("searchterms").setDescription("the search keywords").setRequired(true))      
         ),
         run: async ({client, interaction}) => {
+						
+						await client.player.extractors.loadDefault()
             if (!interaction.member.voice.channel)
                 return interaction.editReply("You need to be in a voice channel to use this.")
 
-            let queue = client.player.getQueue(interaction.guild)
-            if(!queue) queue = client.player.createQueue(interaction.guild)
+            let queue = client.player.nodes.get(interaction.guild)
+						// console.log(queue)
+            if(!queue) queue = client.player.queues.create(interaction.guild)
             if(!queue.connection) await queue.connect(interaction.member.voice.channel)
 
             let embed = new EmbedBuilder()
@@ -38,54 +43,60 @@ module.exports = {
                 let url = interaction.options.getString("url")
                 const result = await client.player.search(url, {
                     requestedBy: interaction.user, 
-                    searchEngine: QueryType.YOUTUBE_VIDEO
+                    // searchEngine: `ext:${YouTubeExtractor.identifier}`
+										fallbackSearchEngine: 'auto'
                 })
-                console.log(result)
+                // console.log(result)
                 if(result.tracks.length === 0)
                     return interaction.editReply("No results")
                 
                 const song = result.tracks[0]
-                console.log(song)
+                //console.log(song)
                 await queue.addTrack(song)
                 embed
                     .setDescription(`Sharkmama: **[${song.title}](${song.url}** is queued)`)
                     .setThumbnail(song.thumbnail)
                     .setFooter({text: `Duration: ${song.duration}`})
-                //console.log(queue)
+                // console.log(queue)
             } else if(interaction.options.getSubcommand() === "playlist") {
-                let url = interaction.options.getString("url")
-                const result = await client.player.search(url, {
+                let url = interaction.options.getString("url") 
+								const result = await client.player.search(url, {
                     requestedBy: interaction.user, 
-                    searchEngine: QueryType.YOUTUBE_PLAYLIST
+                    // searchEngine: `ext:${YouTubeExtractor.identifier}`	
+										fallbackSearchEngine: 'youtubePlaylist'
                 })
+								console.log(result)
                 if(result.tracks.length === 0)
                     return interaction.editReply("No results")
                 
-                    const playlist = result.playlist
-                    console.log(playlist)
-                    await queue.addTracks(result.tracks)
-                    embed
-                        .setDescription(`Sharkmama: **[${playlist.title}](${playlist.url}** is queued)`)
-                        //.setThumbnail(playlist.thumbnail)
+								const playlist = result.playlist
+								console.log(playlist)
+								await queue.addTrack(result.tracks)
+								embed
+										.setDescription(`Sharkmama: **[${playlist.title}](${playlist.url}** is queued)`)
+										.setThumbnail(playlist.thumbnail)
+										.setFooter({text: `Duration: ${playlist.durationFormatted}`})
                         
             } else if(interaction.options.getSubcommand() === "search") {
                 let url = interaction.options.getString("searchterms")
                 const result = await client.player.search(url, {
                     requestedBy: interaction.user, 
-                    searchEngine: QueryType.AUTO
+                    searchEngine: 'auto'
                 })
                 if(result.tracks.length === 0)
                     return interaction.editReply("No results")
                 
-                    const song = result.tracks[0]
-                    await queue.addTrack(song)
-                    embed
-                        .setDescription(`Sharkmama: **[${song.title}](${song.url}** is queued)`)
-                        .setThumbnail(song.thumbnail)
-                        .setFooter({text: `Duration: ${song.duration}`})
+								const song = result.tracks[0]
+								await queue.addTrack(song)
+								embed
+										.setDescription(`Sharkmama: **[${song.title}](${song.url}** is queued)`)
+										.setThumbnail(song.thumbnail)
+										.setFooter({text: `Duration: ${song.duration}`})
             }
-            if(!queue.playing) {
-                await queue.play()
+						console.log(queue.tracks.data)
+            if(!queue.isPlaying()) {
+                await queue.play(queue.tracks.data)
+								.then(console.log(queue))
             } 
             await interaction.editReply({
                 embeds: [embed]

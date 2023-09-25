@@ -7,17 +7,18 @@ module.exports = {
         .setDescription("display info of current song DJ shark is playing"),
 
         run: async ({client, interaction}) => {
-            const queue = client.player.getQueue(interaction.guildId)
+            // const queue = client.player.getQueue(interaction.guildId)
 
+						let queue = client.player.nodes.get(interaction.guild)
             if(!queue) 
                 return await interaction.editReply("There are no songs in the shark's disk")
 
-            let bar = queue.createProgressBar({
+            let bar = queue.node.createProgressBar({
                 queue: false, 
                 length: 19
             })
 
-            const song = queue.current
+            const song = queue.currentTrack
 
             await interaction.editReply({
                 embeds: [new EmbedBuilder()
