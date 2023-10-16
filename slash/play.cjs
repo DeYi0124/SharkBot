@@ -81,8 +81,9 @@ module.exports = {
                 let url = interaction.options.getString("searchterms")
                 const result = await client.player.search(url, {
                     requestedBy: interaction.user, 
-                    searchEngine: 'auto'
+                    fallbackSearchEngine: 'youtubeSearch'
                 })
+                // console.log(result)
                 if(result.tracks.length === 0)
                     return interaction.editReply("No results")
                 
