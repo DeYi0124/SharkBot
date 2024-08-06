@@ -1210,7 +1210,7 @@ if (LOAD_SLASH) {
     })
     if(response.status == 404) {
       return message.channel.send("The player may not be playing any match now.");
-    } else if (response.status != 400) {
+    } else if (response.status != 200) {
       console.log(response)
       return message.channel.send("Sharks may have encounterd some obstacles.")
     }

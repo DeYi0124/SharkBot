@@ -27,3 +27,5 @@ lol
 tofu
 weather
 image
+lolmatch
+lolcurr
