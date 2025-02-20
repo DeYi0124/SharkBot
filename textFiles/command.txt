@@ -29,3 +29,5 @@ weather
 image
 lolmatch
 lolcurr
+check
+chuli

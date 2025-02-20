@@ -29,3 +29,5 @@ get some weather infomation from the Sharkrosoft!
 to ask AI sharks to draw you an image!
 to check if someone is trolling!
 to see curr match for some fucking smurfs
+to check someone's permissions in the server.
+chuli someone

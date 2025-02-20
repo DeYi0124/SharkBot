@@ -1,4 +1,16 @@
 {
+  "name": "SharkBot",
+  "version": "v1.0.0",
+  "description": "Shark bot",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "上github建立專案的網址"
+  },
+  "author": "TheCrack",
   "dependencies": {
     "@discordjs/opus": "^0.9.0",
     "@fightmegg/riot-api": "^0.0.15",
@@ -29,7 +41,7 @@
     "twisted": "^1.53.1",
     "vandal.js": "^1.2.0",
     "weather-js": "^2.0.0",
-    "ytdl-core": "^4.11.5"
+    "ytdl-core": "github:fent/node-ytdl-core#d1f535712410eebd79a7468abd07d94f8c4ebe5a"
   },
   "type": "module"
 }
