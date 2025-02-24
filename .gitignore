@@ -2,4 +2,4 @@ nohup*
 # node_modules/
 *~
 .env
-.sh
+*.sh
