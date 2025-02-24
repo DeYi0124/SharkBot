@@ -10,4 +10,4 @@ var Divisions;
     Divisions["II"] = "II";
     Divisions["III"] = "III";
     Divisions["IV"] = "IV";
-})(Divisions = exports.Divisions || (exports.Divisions = {}));
+})(Divisions || (exports.Divisions = Divisions = {}));

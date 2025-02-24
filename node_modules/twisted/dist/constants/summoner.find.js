@@ -7,4 +7,4 @@ var FindSummonerBy;
     FindSummonerBy["NAME"] = "by-name";
     FindSummonerBy["PUUID"] = "by-puuid";
     FindSummonerBy["ID"] = "";
-})(FindSummonerBy = exports.FindSummonerBy || (exports.FindSummonerBy = {}));
+})(FindSummonerBy || (exports.FindSummonerBy = FindSummonerBy = {}));

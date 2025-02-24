@@ -15,4 +15,4 @@ var GameTypes;
      * All other games
      */
     GameTypes["MATCHED_GAME"] = "MATCHED_GAME";
-})(GameTypes = exports.GameTypes || (exports.GameTypes = {}));
+})(GameTypes || (exports.GameTypes = GameTypes = {}));

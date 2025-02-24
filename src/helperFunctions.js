@@ -2,6 +2,7 @@ import { createRequire } from "module";
 import fs from "fs" //import fs from 'fs';
 const require = createRequire(import.meta.url);
 import yytdl from "ytdl-core"
+import ytdl from '@distube/ytdl-core'
 import { EmbedBuilder } from "discord.js"
 function errorHandling(message, err) {
   console.error(err);
@@ -17,16 +18,30 @@ export function leftToEight() {
 }
 
 export async function imageFd(message, str) {
-  const gis = require("async-g-i-s");
-  (async () => {
-    try {
-      const results = await gis(str);
-      let idx = getRandom(results.length);
-      message.channel.send(results[idx].url);
-    } catch (e) {
-      errorHandling(message, e);
-    }
-  })();
+  // var fotology = require("fotology-x");
+  const gis = require("g-i-s");
+  gis(str, logResults);
+
+function logResults(error, results) {
+  if (error) {
+    //console.log(error);
+    errorHandling(message, e);
+  }
+  else {
+    JSON.stringify(results, null, '  ');
+    let idx = getRandom(results.length);
+    message.channel.send(results[idx].url);
+  }
+}
+// (async () => {
+  //   try {
+  //     const results = await gis(str);
+  //     let idx = getRandom(results.length);
+  //     message.channel.send(results[idx].url);
+  //   } catch (e) {
+  //     errorHandling(message, e);
+  //   }
+  // })();
 }
 
 async function artificialIdiot(message, prom) {
@@ -133,9 +148,10 @@ export async function fetchWeather(city, message) {
 }
 
 export async function DL(url, message, flag) {
+  // const ytdl = require("@distube/ytdl-core");
   message.channel.send("Sharks are looking for the file...");
   if (flag == 0) {
-    let res = await yytdl(url, { filter: "audioonly", format: "mp3" });
+    let res = await ytdl(url, { filter: "audioonly", format: "mp3" });
     console.log(res)
     let now = new Date();
     let wd = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
@@ -179,7 +195,7 @@ export async function DL(url, message, flag) {
           });
       });
   } else if (flag == 1) {
-    let res = yytdl(url, { filter: "audioandvideo", format: "mp4" });
+    let res = ytdl(url, { filter: "audioandvideo", format: "mp4" });
     // console.log(res)
     let now = new Date();
     let wd = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];

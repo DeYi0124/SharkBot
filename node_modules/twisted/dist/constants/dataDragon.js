@@ -5,4 +5,4 @@ var DataDragonEnum;
 (function (DataDragonEnum) {
     DataDragonEnum["BASE"] = "https://ddragon.leagueoflegends.com";
     DataDragonEnum["STATIC"] = "http://static.developer.riotgames.com";
-})(DataDragonEnum = exports.DataDragonEnum || (exports.DataDragonEnum = {}));
+})(DataDragonEnum || (exports.DataDragonEnum = DataDragonEnum = {}));

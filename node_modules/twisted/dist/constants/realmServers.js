@@ -14,4 +14,4 @@ var RealmServers;
     RealmServers["RUSSIA"] = "ru";
     RealmServers["JAPAN"] = "jp";
     RealmServers["PBE"] = "pbe";
-})(RealmServers = exports.RealmServers || (exports.RealmServers = {}));
+})(RealmServers || (exports.RealmServers = RealmServers = {}));

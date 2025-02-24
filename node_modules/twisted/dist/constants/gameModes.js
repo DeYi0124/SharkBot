@@ -75,4 +75,4 @@ var GameModes;
      * Odyssey: Extraction games
      */
     GameModes["ODYSSEY"] = "ODYSSEY";
-})(GameModes = exports.GameModes || (exports.GameModes = {}));
+})(GameModes || (exports.GameModes = GameModes = {}));

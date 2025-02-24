@@ -15,4 +15,4 @@ var Seasons;
     Seasons[Seasons["SEASON_2017"] = 9] = "SEASON_2017";
     Seasons[Seasons["PRESEASON_2018"] = 10] = "PRESEASON_2018";
     Seasons[Seasons["SEASON_2018"] = 11] = "SEASON_2018";
-})(Seasons = exports.Seasons || (exports.Seasons = {}));
+})(Seasons || (exports.Seasons = Seasons = {}));

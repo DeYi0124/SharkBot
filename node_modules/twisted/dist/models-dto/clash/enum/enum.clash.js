@@ -10,9 +10,9 @@ var PlayerPositionClashEnum;
     PlayerPositionClashEnum["MIDDLE"] = "MIDDLE";
     PlayerPositionClashEnum["BOTTOM"] = "BOTTOM";
     PlayerPositionClashEnum["UTILITY"] = "UTILITY";
-})(PlayerPositionClashEnum = exports.PlayerPositionClashEnum || (exports.PlayerPositionClashEnum = {}));
+})(PlayerPositionClashEnum || (exports.PlayerPositionClashEnum = PlayerPositionClashEnum = {}));
 var PlayerRoleClashEnum;
 (function (PlayerRoleClashEnum) {
     PlayerRoleClashEnum["CAPTAIN"] = "CAPTAIN";
     PlayerRoleClashEnum["MEMBER"] = "MEMBER";
-})(PlayerRoleClashEnum = exports.PlayerRoleClashEnum || (exports.PlayerRoleClashEnum = {}));
+})(PlayerRoleClashEnum || (exports.PlayerRoleClashEnum = PlayerRoleClashEnum = {}));

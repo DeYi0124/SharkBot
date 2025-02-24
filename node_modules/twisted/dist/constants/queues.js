@@ -10,4 +10,4 @@ var Queues;
     Queues["RANKED_TFT"] = "RANKED_TFT";
     Queues["RANKED_FLEX_SR"] = "RANKED_FLEX_SR";
     Queues["RANKED_FLEX_TT"] = "RANKED_FLEX_TT";
-})(Queues = exports.Queues || (exports.Queues = {}));
+})(Queues || (exports.Queues = Queues = {}));

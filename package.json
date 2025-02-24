@@ -13,6 +13,7 @@
   "author": "TheCrack",
   "dependencies": {
     "@discordjs/opus": "^0.9.0",
+    "@distube/ytdl-core": "^4.16.4",
     "@fightmegg/riot-api": "^0.0.15",
     "@meibot/unofficial-valorant-api": "^3.0.0-stable.2",
     "async-g-i-s": "^1.5.0",
@@ -24,6 +25,8 @@
     "djs-soundboard": "^6.0.0",
     "dotenv": "^16.3.1",
     "downloadjs": "^1.4.7",
+    "fotology": "^1.2.2",
+    "fotology-x": "^1.2.4",
     "g-i-s": "^2.1.6",
     "http": "^0.0.1-security",
     "https": "^1.0.0",
@@ -41,7 +44,7 @@
     "twisted": "^1.53.1",
     "vandal.js": "^1.2.0",
     "weather-js": "^2.0.0",
-    "ytdl-core": "github:fent/node-ytdl-core#d1f535712410eebd79a7468abd07d94f8c4ebe5a"
+    "ytdl-core": "npm:@distube/ytdl-core@^4.16.4"
   },
   "type": "module"
 }

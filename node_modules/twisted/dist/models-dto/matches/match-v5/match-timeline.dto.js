@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MatchV5TimelineDTOs = void 0;
+// eslint-disable-next-line @typescript-eslint/no-namespace
 var MatchV5TimelineDTOs;
 (function (MatchV5TimelineDTOs) {
     let Name;
@@ -64,4 +65,4 @@ var MatchV5TimelineDTOs;
         WardType["Undefined"] = "UNDEFINED";
         WardType["YellowTrinket"] = "YELLOW_TRINKET";
     })(WardType || (WardType = {}));
-})(MatchV5TimelineDTOs = exports.MatchV5TimelineDTOs || (exports.MatchV5TimelineDTOs = {}));
+})(MatchV5TimelineDTOs || (exports.MatchV5TimelineDTOs = MatchV5TimelineDTOs = {}));

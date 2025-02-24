@@ -21,7 +21,7 @@ class Logger {
         console.timeEnd(name);
     }
     static uri(options, endpoint) {
-        const uri = base_utils_1.getUrlFromOptions(options);
+        const uri = (0, base_utils_1.getUrlFromOptions)(options);
         console.log(`Calling method url: ${uri} (${endpoint.path})`);
     }
     static rateLimit(endpoint, ms) {
