@@ -131,6 +131,11 @@ if (LOAD_SLASH) {
       message.author.bot
     )
       return;
+    if(message.content.toLowerCase() === "kys") {
+      message.channel.send("I will be back. :(").then(() => {
+        client.destroy();
+      }
+    }
     if(!message.guild) {
       const args = message.content.slice(prefix.length).trim().split(" ");
       const cmd = args.shift().toLowerCase();
